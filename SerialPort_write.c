@@ -73,7 +73,11 @@ void main(void)
 	char write_buffer[] = "ABCDE12345";	// Buffer containing characters to write into port
 	int  bytes_written  = 0;  	// Value for storing the number of bytes written to the port 
 
-	bytes_written = write(fd, write_buffer, sizeof(write_buffer)); // use write() to send data to port 
+	// Ajouter un saut de ligne à la fin du texte
+    strcat(write_buffer, "\n");
+
+
+	bytes_written = write(fd, write_buffer, strlen(write_buffer)); // use write() to send data to port 
 										// "fd"                   - file descriptor pointing to the opened serial port
 										//	"write_buffer"         - address of the buffer containing data
 										// "sizeof(write_buffer)" - No of bytes to write 
